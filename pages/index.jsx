@@ -28,6 +28,7 @@ Home.getInitialProps = async () => {
   return {
    id: `image-${i.id}`,
    image: i.image,
+   title: i.title,
   };
  });
  return { movies, images };
