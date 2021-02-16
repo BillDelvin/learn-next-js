@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const Form = () => {
+const Form = (props) => {
  const [form, setForm] = useState({});
 
  const handleChange = (event) => {
@@ -15,7 +15,6 @@ const Form = () => {
   const optLength = options.length;
   let value = [];
 
-  console.log(event);
   for (let i = 0; i < optLength; i++) {
    if (options[i].selected) {
     value.push(options[i].value);
@@ -26,6 +25,10 @@ const Form = () => {
    ...form,
    genre: value.toString(),
   });
+ };
+
+ const onSubmit = () => {
+  props.handleFormSubmit({ ...form });
  };
 
  return (
@@ -114,6 +117,9 @@ const Form = () => {
      <option>action</option>
     </select>
    </div>
+   <button type='button' onClick={onSubmit} className='btn btn-primary'>
+    Create
+   </button>
   </form>
  );
 };
