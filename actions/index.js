@@ -73,3 +73,13 @@ export const getCategories = () => {
   }, 50);
  });
 };
+
+export const createMovies = (movie) => {
+ return new Promise((resolve, reject) => {
+  MOVIE_DATA.push(movie);
+  setTimeout(() => {
+   resolve(MOVIE_DATA);
+   // reject("can't fetch data");
+  }, 50);
+ });
+};
