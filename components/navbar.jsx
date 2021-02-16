@@ -6,7 +6,7 @@ const Navbar = () => {
   <nav className='navbar sticky-top navbar-expand-lg navbar-dark bg-dark fixed-top'>
    <div className='container'>
     <a className='navbar-brand' href='#'>
-     Start Bootstrap
+     Movies App
     </a>
     <button
      className='navbar-toggler'
