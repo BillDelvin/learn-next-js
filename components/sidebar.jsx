@@ -6,16 +6,18 @@ import { createMovies } from '../actions';
 
 const Sidebar = (props) => {
  const { categories } = props;
+ let closeModal = null;
 
  const handlerCreateMovie = (movie) => {
   createMovies(movie).then((m) => {
    console.log(JSON.stringify(m));
+   closeModal.closeModal();
   });
  };
 
  return (
   <div className='col-lg-3 mt-3'>
-   <Modal submitButton={false}>
+   <Modal ref={(el) => (closeModal = el)} submitButton={false}>
     <Form handleFormSubmit={handlerCreateMovie} />
    </Modal>
    <h1 className='my-4'>Shop Name</h1>
