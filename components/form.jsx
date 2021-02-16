@@ -1,7 +1,14 @@
 import { useState } from 'react';
 
 const Form = (props) => {
- const [form, setForm] = useState({});
+ const [form, setForm] = useState({
+  name: '',
+  description: '',
+  rating: '',
+  image: '',
+  cover: '',
+  longDesc: '',
+ });
 
  const handleChange = (event) => {
   const { target } = event;
