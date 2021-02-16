@@ -3,15 +3,15 @@ import Sidebar from '../components/sidebar';
 import Carousel from '../components/carousel';
 import MovieList from '../components/movieList';
 
-import { getMovies } from '../actions';
+import { getMovies, getCategories } from '../actions';
 
 const Home = (props) => {
- const { movies, images } = props;
+ const { movies, images, categories } = props;
  return (
   <div>
    <div className='container'>
     <div className='row'>
-     <Sidebar />
+     <Sidebar categories={categories} />
      <div className='col-lg-9'>
       <Carousel images={images} />
       <MovieList movies={movies || []} />
@@ -24,6 +24,7 @@ const Home = (props) => {
 
 Home.getInitialProps = async () => {
  const movies = await getMovies();
+ const categories = await getCategories();
  const images = movies.map((i) => {
   return {
    id: `image-${i.id}`,
@@ -31,7 +32,7 @@ Home.getInitialProps = async () => {
    title: i.title,
   };
  });
- return { movies, images };
+ return { movies, images, categories };
 };
 
 // class Home extends Component {
