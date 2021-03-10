@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import Sidebar from '../components/sidebar';
 import Carousel from '../components/carousel';
 import MovieList from '../components/movieList';
@@ -7,19 +7,31 @@ import { getMovies, getCategories } from '../actions/index';
 
 const Home = (props) => {
  const { movies, images, categories } = props;
+ const [filter, setFilter] = useState('all');
 
  const changeCategory = (category) => {
-  alert(`change : ${category}`);
+  setFilter(category);
+ };
+
+ const filterMovie = (movie) => {
+  if (filter === 'all') {
+   return movie;
+  } else {
+   return movie.filter((m) => {
+    return m.genre && m.genre.includes(filter);
+   });
+  }
  };
 
  return (
   <div>
    <div className='container'>
     <div className='row'>
-     <Sidebar categories={categories} changeCategory={changeCategory} />
+     <Sidebar categories={categories} changeCategory={changeCategory} activeCategory={filter} />
      <div className='col-lg-9'>
       <Carousel images={images} />
-      <MovieList movies={movies || []} />
+      <h1>Displaying {filter} movie</h1>
+      <MovieList movies={filterMovie(movies) || []} />
      </div>
     </div>
    </div>
