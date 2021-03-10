@@ -3,15 +3,20 @@ import Sidebar from '../components/sidebar';
 import Carousel from '../components/carousel';
 import MovieList from '../components/movieList';
 
-import { getMovies, getCategories } from '../actions';
+import { getMovies, getCategories } from '../actions/index';
 
 const Home = (props) => {
  const { movies, images, categories } = props;
+
+ const changeCategory = (category) => {
+  alert(`change : ${category}`);
+ };
+
  return (
   <div>
    <div className='container'>
     <div className='row'>
-     <Sidebar categories={categories} />
+     <Sidebar categories={categories} changeCategory={changeCategory} />
      <div className='col-lg-9'>
       <Carousel images={images} />
       <MovieList movies={movies || []} />
