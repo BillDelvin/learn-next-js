@@ -25,10 +25,10 @@ const Home = (props) => {
 
  return (
   <div>
-   <div className='container'>
-    <div className='row'>
+   <div className="container home-page">
+    <div className="row">
      <Sidebar categories={categories} changeCategory={changeCategory} activeCategory={filter} />
-     <div className='col-lg-9'>
+     <div className="col-lg-9">
       <Carousel images={images} />
       <h1>Displaying {filter} movie</h1>
       <MovieList movies={filterMovie(movies) || []} />
