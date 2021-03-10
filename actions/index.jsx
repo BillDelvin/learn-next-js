@@ -36,5 +36,9 @@ export const createMovies = async (movie) => {
 };
 
 export const deleteMovie = async (id) => {
- return axios.delete(`${http}/api/v1/movies/${id}`).then((res) => res.data);
+ return await axios.delete(`${http}/api/v1/movies/${id}`);
+};
+
+export const updateMovie = async (movie) => {
+ return await axios.patch(`${http}/api/v1/movies/${movie.id}`, movie).then((res) => res.data);
 };
