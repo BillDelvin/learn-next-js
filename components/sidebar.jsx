@@ -1,17 +1,18 @@
-import React from 'react';
+import { useRouter } from 'next/router';
 
 import Modal from './modal';
 import Form from './form';
-import { createMovies } from '../actions';
+import { createMovies } from '../actions/index';
 
 const Sidebar = (props) => {
  const { categories } = props;
+ const router = useRouter();
  let closeModal = null;
 
  const handlerCreateMovie = (movie) => {
   createMovies(movie).then((m) => {
-   console.log(JSON.stringify(m));
    closeModal.closeModal();
+   router.push('/');
   });
  };
 
