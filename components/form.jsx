@@ -1,14 +1,17 @@
 import { useState } from 'react';
 
 const Form = (props) => {
- const [form, setForm] = useState({
+ const defaultData = {
   name: '',
   description: '',
   rating: '',
   image: '',
   cover: '',
   longDesc: '',
- });
+ };
+
+ const formData = props.initialData ? { ...props.initialData } : defaultData;
+ const [form, setForm] = useState(formData);
 
  const handleChange = (event) => {
   const { target } = event;
@@ -35,7 +38,7 @@ const Form = (props) => {
  };
 
  const onSubmit = () => {
-  props.handleFormSubmit({ ...form });
+  props.handleSubmitForm({ ...form });
  };
 
  return (
