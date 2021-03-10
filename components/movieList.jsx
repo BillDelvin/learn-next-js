@@ -12,7 +12,7 @@ class MovieList extends Component {
 
  renderMovies = () => {
   const { movies } = this.props;
-  return movies.moviesData.map((movie) => (
+  return movies.map((movie) => (
    <div className='col-lg-4 col-md-6 mb-4' key={movie.id}>
     <div className='card h-100'>
      <Link href={`/movies/${movie.id}`}>
