@@ -43,3 +43,7 @@ export const deleteMovie = async (id) => {
 export const updateMovie = async (movie) => {
  return await axios.patch(`${http}/api/v1/movies/${movie.id}`, movie).then((res) => res.data);
 };
+
+export const getPosts = async () => {
+ return await axios.get(`${http}/api/v1/posts`).then((res) => res.data);
+};
